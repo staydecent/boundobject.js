@@ -1,0 +1,15 @@
+{
+  "name": "boundobject.js",
+  "version": "0.1.0",
+  "description": "2 way binding concept using Mutation Observers and Microevent.js",
+  "main": "boundobject.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": "",
+  "author": "Adrian Unger",
+  "license": "MIT",
+  "devDependencies": {
+    "adhesive": "~0.1.0"
+  }
+}

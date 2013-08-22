@@ -1,0 +1,10 @@
+{
+  "name": "BoundObject",
+  "version": "0.1.0",
+  "main": "boundobject.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
