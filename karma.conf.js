@@ -23,7 +23,8 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-html2js-preprocessor',
       'karma-chrome-launcher',
-      'karma-firefox-launcher'
+      'karma-firefox-launcher',
+      'karma-phantomjs-launcher'
     ],
   });
 };
