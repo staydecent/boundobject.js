@@ -2,6 +2,8 @@
  * Bound Object - 2 way binding concept
  * Adrian unger, http://staydecent.ca
  * MIT Licensed
+ *
+ * http://github.com/staydecent/boundobject.js
 */
 
 (function(window, MicroEvent) {
@@ -53,9 +55,6 @@
       }
     });
   };
-
-  // default handler for dom change event
-  //BoundObject.prototype.onChange = function(property, value)
   
   // Stick a DOM element and BoundObject property together
   BoundObject.prototype.stick = function(property, target) {
