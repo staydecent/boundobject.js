@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "description": "2 way binding concept using Mutation Observers and Microevent.js",
   "main": "boundobject.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
-    "test": ""
+    "test": "node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": "",
   "author": "Adrian Unger",
   "license": "MIT",
   "devDependencies": {
-    "karma": "~0.8.4",
+    "karma": "~0.10.2",
     "grunt": "~0.4.1",
     "grunt-contrib-uglify": "git://github.com/staydecent/grunt-contrib-uglify"
   }

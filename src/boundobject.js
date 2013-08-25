@@ -17,15 +17,17 @@
   })();
 
   // initialize any bindings
-  var BoundObject = function(bindings) {
+  var BoundObject = function(bindings, debug) {
     var self = this,
         properties = Object.keys(bindings),
         propertiesLength = properties.length,
         property;
 
-    if (!this.hasOwnProperty('debug') || this.debug !== true) {
+    if (debug !== undefined) {
+      this.debug = true;
+    } else if (!this.hasOwnProperty('debug') || this.debug !== true) {
       this.debug = false;
-    }
+    } 
 
     // sync changes to object property
     this.bind('change', function(property, text) {
@@ -59,6 +61,10 @@
   // Stick a DOM element and BoundObject property together
   BoundObject.prototype.stick = function(property, target) {
     var self = this;
+
+    if (this.debug) {
+      console.debug('stick()', property, target);
+    }
     
     // create an observer instance
     var observer = new MutationObserver(function(mutations) { 
@@ -81,9 +87,11 @@
     self._observers = self._observers || {};
     self._observers[property] = observer;
 
-    // push property value to node
+    // push property value to node or vice-versa
     if (self.hasOwnProperty(property)) {
       self.set(property, self[property]);
+    } else {
+      self[property] = target.textContent;
     }
     
     return self;
@@ -148,6 +156,29 @@
     return this[property];
   };
 
+  // how do we know our events have fired?
+  BoundObject.prototype.hasFired = function(property) {
+    var self = this;
+    var observer = this._observers[property];
+    var target = this._bindings[property];
+    var records = observer.takeRecords();
+    var recLen = records.length;
+    var fired = true;
+
+    for (var i = 0; i < recLen; i++) {
+      var rec = records[i];
+      if (rec.target === target) {
+        fired = false;
+      }
+    }
+
+    // none of the mutationRecords matched our target!
+    // but we need to return records to the queue first.
+    self.handleMutations(records, property, self); 
+
+    return fired;
+  };
+
   MicroEvent.mixin(BoundObject);
   window.BoundObject = BoundObject;
 
@@ -157,20 +188,5 @@
 // observe this!
 // -------------
 
-var myModel = new BoundObject({
-  'fun': document.querySelector('#fun')
-});
-var target = document.querySelector('#test');
-
-myModel.debug = true;
-
-myModel.test = 'neato'; // when stick is called, dom will update to match this
-myModel.stick('test', target);
-
-// Trigger events
-target.textContent = "2 way binding,";
-myModel.set('fun', 'for everyone!');
-
-myModel.unstick('test');
-myModel.unstick(); // will unset all bindings, 'fun' in this case
-myModel.set('fun', 'dom will not see this');
+// myModel.unstick(); // will unset all bindings, 'fun' in this case
+// myModel.set('fun', 'dom will not see this');
