@@ -9,7 +9,7 @@
   "scripts": {
     "test": "node_modules/karma/bin/karma start karma.conf.js"
   },
-  "repository": "",
+  "repository": "https://github.com/staydecent/boundobject.js",
   "author": "Adrian Unger",
   "license": "MIT",
   "devDependencies": {
