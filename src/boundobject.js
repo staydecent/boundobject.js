@@ -183,10 +183,3 @@
   window.BoundObject = BoundObject;
 
 })(window, MicroEvent);
-
-
-// observe this!
-// -------------
-
-// myModel.unstick(); // will unset all bindings, 'fun' in this case
-// myModel.set('fun', 'dom will not see this');

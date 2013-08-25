@@ -61,10 +61,22 @@ describe("BoundObject", function() {
     });
   });
 
-  // it("should not match property on node change", function() {
-  //   runs(function() {
+  it("should not match property on node change", function() {
+    runs(function() {
+      var target = document.querySelector('#test');
+      myModel.unstick('test');
+      target.textContent = 'myModel will not see this.';
+      expect(myModel.get('test')).toNotEqual('myModel will not see this.');
+    });
+  });
 
-  //   });
-  // });
+  it("should not set property value on node", function() {
+    runs(function() {
+      var target = document.querySelector('#fun');
+      myModel.unstick(); // will unset all bindings, 'fun' in this case
+      myModel.set('fun', 'dom will not see this');
+      expect(target.textContent).toNotEqual('dom will not see this');
+    });
+  });
 
 });
