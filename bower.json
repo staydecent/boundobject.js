@@ -2,6 +2,18 @@
   "name": "BoundObject",
   "version": "0.1.0",
   "main": "boundobject.js",
+  "authors": [
+    "Adrian Unger"
+  ],
+  "description": "Two way binding concept between Objects and DOM elements using MutationObserver.",
+  "keywords": [
+    "bound",
+    "object",
+    "binding",
+    "data",
+    "model",
+  ],
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
