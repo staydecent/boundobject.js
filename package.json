@@ -3,20 +3,28 @@
   "version": "0.1.0",
   "description": "2 way binding concept using Mutation Observers and Microevent.js",
   "main": "boundobject.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
-    "test": "node_modules/karma/bin/karma start karma.conf.js"
+    "build": "rollup -c",
+    "pretest": "standard --verbose | snazzy",
+    "test": "karma start karma.conf.js",
+    "posttest": "nsp check"
   },
   "repository": "https://github.com/staydecent/boundobject.js",
   "author": "Adrian Unger",
   "license": "MIT",
   "devDependencies": {
-    "karma": "~0.10.2",
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "git://github.com/staydecent/grunt-contrib-uglify",
-    "grunt-karma": "~0.6.1",
-    "karma-phantomjs-launcher": "~0.1.0"
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.5.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-html2js-preprocessor": "^1.1.0",
+    "karma-jasmine": "^1.1.0",
+    "nsp": "^2.6.3",
+    "rollup": "^0.41.6",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "snazzy": "^6.0.0",
+    "standard": "^9.0.1"
   }
 }
