@@ -4,7 +4,8 @@
   "description": "2 way binding concept using Mutation Observers and Microevent.js",
   "main": "boundobject.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm test && rollup -c",
+    "start": "npm run build",
     "pretest": "standard --verbose | snazzy",
     "test": "karma start karma.conf.js",
     "posttest": "nsp check"
