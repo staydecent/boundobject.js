@@ -51,14 +51,14 @@ describe('BoundObject', function () {
 
   it('should not match property on node change', function () {
     const target = document.querySelector('#test')
-    myModel.unstick('test')
+    myModel.unstick('test', target)
     target.textContent = 'myModel will not see this.'
     expect(myModel.get('test')).not.toEqual('myModel will not see this.')
   })
 
   it('should not set property value on node', function () {
     const target = document.querySelector('#fun')
-    myModel.unstick() // will unset all bindings, 'fun' in this case
+    myModel.unstick('fun') // will unset all bindings, 'fun' in this case
     myModel.set('fun', 'dom will not see this')
     expect(target.textContent).not.toEqual('dom will not see this')
   })
